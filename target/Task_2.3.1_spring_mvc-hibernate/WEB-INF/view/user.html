@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User Management</title>
+</head>
+<body>
+<h1>User Data</h1>
+
+<form action="/user.do" method="post" commandName="user">
+    <table>
+        <tr>
+            <td>User ID</td>
+            <td>form:input path="userId"/></td>
+        </tr>
+        <tr>
+            <td>First name</td>
+            <td>form:input path="name"/></td>
+        </tr>
+        <tr>
+            <td>Last name</td>
+            <td>form:input path="lastName"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <input type="submit" name="action" value="Add"/>
+            <input type="submit" name="action" value="Update"/>
+            <input type="submit" name="action" value="Delete"/>
+            <input type="submit" name="action" value="Search"/>
+        </tr>
+    </table>
+</form>
+<br>
+<table border="1">
+    <th:block th:each="user : ${userList}">
+        <h1 th:text="${user}"></h1>
+    </th:block>
+</table>
+</body>
+</html>
