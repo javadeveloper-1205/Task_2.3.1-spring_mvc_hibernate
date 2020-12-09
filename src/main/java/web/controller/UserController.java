@@ -20,25 +20,25 @@ public class UserController {
 
     @GetMapping("/")
     public String allUsers(Model model) {
-        List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("allListUsers", allUsers);
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
         return "all-users";
     }
 
-    @GetMapping("/addNewUser")
+    @GetMapping("users/addNewUser")
     public String addNewUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "user-info";
     }
 
-    @GetMapping("/saveUser")
+    @GetMapping("users/saveUser")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.add(user);
         return "redirect:/";
     }
 
-    @GetMapping("/updateInfo")
+    @GetMapping("users/updateInfo")
     public String updateUser(@RequestParam("userId") int id, Model model) {
         return "user-info";
     }

@@ -15,7 +15,9 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -25,7 +27,7 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 public class AppConfigHibernate {
 
-    @PersistenceContext
+    @Autowired
     private Environment environment;
 
     @Bean
@@ -52,7 +54,6 @@ public class AppConfigHibernate {
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan(new String[]{"web.model"});
-
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(additionalProperties());

@@ -15,12 +15,12 @@
         <th>LastName</th>
         <th>Operations</th>
     </tr>
-    <th:block th:each="user : ${allListUsers}">
+    <th:block th:each="user : ${users}">
         <url var="updateButton" value="/updateInfo">
             <param name="userId" value="${user.id}">
         </url>
         <tr>
-            <th:block th:each="user : ${allListUsers}">
+            <th:block th:each="user : ${users}">
                 <h1 th:text="${user}"></h1>
             </th:block>
             <td>

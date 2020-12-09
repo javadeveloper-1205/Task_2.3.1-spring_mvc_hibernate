@@ -6,12 +6,14 @@ import web.dao.UserDao;
 import web.model.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-    @Autowired
+
+    @PersistenceContext
     private EntityManager entityManager;
 
     @Override
