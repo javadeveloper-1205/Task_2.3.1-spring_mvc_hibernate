@@ -7,8 +7,12 @@
 <body>
 <h2>User-info</h2>
 <br>
-
-<form action=""></form>
-       
+<form th:action="saveUser" th:object="${user}" method="post">
+    Id <input type="id" th:field="*{id}">
+    Name <input type="name" th:field="*{name}">
+    LastName <input type="lastName" th:field="*{lastName}">
+    <br>
+    <input type="submit" value="OK">
+</form>
 </body>
 </html>

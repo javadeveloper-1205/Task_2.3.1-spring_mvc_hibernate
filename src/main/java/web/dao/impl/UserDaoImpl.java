@@ -6,6 +6,7 @@ import web.dao.UserDao;
 import web.model.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -24,8 +25,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User read(int userId) {
-        return entityManager.find(User.class, userId);
+    public User read(int id) {
+        return entityManager.find(User.class, id);
     }
 
     @Override
@@ -34,7 +35,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void delete(int userId) {
-        entityManager.remove(read(userId));
+    public void delete(int id) {
+        Query query = entityManager.createQuery("delete from User " +
+                "where id =:userId");
+        query.setParameter("userId", id);
+        query.executeUpdate();
     }
 }

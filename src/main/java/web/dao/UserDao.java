@@ -10,9 +10,9 @@ public interface UserDao {
 
     List<User> getAllUsers();
 
-    User read(int UserId);
+    User read(int id);
 
     void update(User user);
 
-    void delete(int userId);
+    void delete(int id);
 }

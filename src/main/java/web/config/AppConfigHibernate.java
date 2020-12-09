@@ -15,6 +15,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -24,7 +25,7 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 public class AppConfigHibernate {
 
-    @Autowired
+    @PersistenceContext
     private Environment environment;
 
     @Bean
@@ -35,6 +36,14 @@ public class AppConfigHibernate {
         driverManagerDataSource.setUsername(environment.getProperty("db.username"));
         driverManagerDataSource.setPassword(environment.getProperty("db.password"));
         return driverManagerDataSource;
+    }
+
+    @Bean
+    public Properties additionalProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+        properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+        return properties;
     }
 
     @Bean
@@ -60,12 +69,5 @@ public class AppConfigHibernate {
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
-    }
-
-    Properties additionalProperties() {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-        return properties;
     }
 }
