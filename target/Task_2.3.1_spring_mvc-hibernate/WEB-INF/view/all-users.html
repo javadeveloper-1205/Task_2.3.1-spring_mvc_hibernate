@@ -2,38 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>All Employes</title>
+    <title>All Users</title>
 </head>
 <body>
-<h2>All Employees</h2>
-<br>
+<div align="center">
+    <h1>Users List</h1>
+    <table border="1">
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>LastName</th>
-        <th>Operations</th>
-    </tr>
-    <th:block th:each="user : ${users}">
-        <url var="updateButton" value="/updateInfo">
-            <param name="userId" value="${user.id}">
-        </url>
         <tr>
-            <th:block th:each="user : ${users}">
-                <h1 th:text="${user}"></h1>
-            </th:block>
-            <td>
-                <input type="button" value="Update"
-                       onclick="window.location.href = '${updateButton}'">
-            </td>
+            <th>User First Name</th>
+            <th>User Last Name</th>
         </tr>
-    </th:block>
-</table>
 
-<br>
-<input type="button" value="Add"
-       onclick="window.location.href='addNewUser'"/>
+        <tbody>
+        <th:block block th:each="users : ${listUsers}">
+            <h1 th: th:text="${users}"></h1>
+        </th:block>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
 
