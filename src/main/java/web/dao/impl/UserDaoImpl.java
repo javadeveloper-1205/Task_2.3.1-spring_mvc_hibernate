@@ -1,6 +1,5 @@
 package web.dao.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import web.dao.UserDao;
 import web.model.User;
@@ -17,7 +16,7 @@ public class UserDaoImpl implements UserDao {
     private EntityManager entityManager;
 
     @Override
-    public void add(User user) {
+    public void addUser(User user) {
         entityManager.persist(user);
     }
 
@@ -27,20 +26,38 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User read(int id) {
+    public User findUser(int id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
-    public void update(User user) {
-        entityManager.merge(user);
-    }
-
-    @Override
-    public void delete(int id) {
+    public void deleteUser(int id) {
         Query query = entityManager.createQuery("delete from User " +
                 "where id =:userId");
         query.setParameter("userId", id);
         query.executeUpdate();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    @Override
+//    public void updateUser(int id, User user) {
+//        User userToBeUpdated = findUser(id);
+//        userToBeUpdated.setName(user.getName());
+//        userToBeUpdated.setLastName(user.getLastName());
+//        entityManager.merge(userToBeUpdated);
+//    }

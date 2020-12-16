@@ -7,20 +7,55 @@
 <body>
 <div align="center">
     <h1>Users List</h1>
-    <table border="1">
-
+    <br>
+    <h2><a href="addNewUser">Add User</a></h2>
+    <table>
         <tr>
+            <th>User Id</th>
             <th>User First Name</th>
             <th>User Last Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
-
         <tbody>
-        <th:block block th:each="users : ${listUsers}">
-            <h1 th: th:text="${users}"></h1>
+        <th:block th:each="user : ${listUsers}">
+
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.lastName}"></td>
+
+            <td><a th:href="@{'/updateUser/' + ${user.id}}">Edit</a></td>
+            <td><a th:href="@{'/delete/' + ${user.id}}">Delete</a></td>
+
+            </tr>
         </th:block>
+
         </tbody>
     </table>
 </div>
 </body>
 </html>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--            <td><a href="@{/{id}/updateUser(id=${user.id})}">Update</a></td>-->
+<!--                <td><a href="@{'/deleteUser/' + ${user.id}}">Delete</a></td>-->

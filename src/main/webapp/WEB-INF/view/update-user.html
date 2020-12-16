@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+</head>
+<body>
+<h1>User Edit Form</h1>
+<br/>
+<form th:object="${user}" th:action="@{/saveUser}" method="post">
+    <table>
+        <tr>
+            <td>User Firstname</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>User lastName</td>
+            <td><input type="text" th:field="*{lastName}"/></td>
+        </tr>
+        <td><button type="submit">Update</button></td>
+    </table>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<form th:method="PATCH" th:action="@{/{id}(id=${user.getId()})}" th:object="${user}">-->
+<!--    <tr>-->
+<!--        <td>Employee Firstname</td>-->
+<!--        <td><input type="text" th:field="*{name}"/></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>Employee Lastname</td>-->
+<!--        <td><input type="text" th:field="*{lastName}"/></td>-->
+<!--    </tr>-->
+<!--    <br/>-->
+<!--</form>-->
+
+<!--   <td><button type="submit">Update</button></td>-->
+
+<!--    <form th:method="DELETE" th:action="@{/{id}/deleteUser(id=${user.getId()})}"></form>-->
+<!--    <input type="submit" value="Delete"/>-->

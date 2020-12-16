@@ -2,17 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User-info</title>
+    <title>Insert New User</title>
 </head>
 <body>
-<h2>User-info</h2>
-<br>
-<form th:action="saveUser" th:object="${user}" method="post">
-    Id <input type="id" th:field="*{id}">
-    Name <input type="name" th:field="*{name}">
-    LastName <input type="lastName" th:field="*{lastName}">
-    <br>
-    <input type="submit" value="OK">
-</form>
+<div align="center">
+    <h1>New User Form</h1>
+    <br/>
+    <form th:object="${user}" th:action="@{/saveUser}" method="post">
+    <table border="1">
+        <tr>
+            <td>Employee Firstname</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+        <td>Employee Lastname</td>
+        <td><input type="text" th:field="*{lastName}"/></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Insert</button>
+            </td>
+        </tr>
+    </table>
+    </form>
+</div>
 </body>
 </html>

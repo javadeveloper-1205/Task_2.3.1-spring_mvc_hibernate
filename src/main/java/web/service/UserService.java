@@ -8,11 +8,24 @@ public interface UserService {
 
     void add(User user);
 
-    User read(int userId);
-
-    void update(User user);
+    User find(int id);
 
     void delete(int id);
 
     List<User> getAllUsers();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    void update(int id, User user);
