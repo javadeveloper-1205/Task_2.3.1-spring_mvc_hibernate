@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import web.model.User;
 import web.service.UserService;
 
+import javax.persistence.FlushModeType;
 import java.util.List;
 
 
@@ -21,15 +22,13 @@ public class UserController {
 
     @GetMapping("/")
     public ModelAndView printallUsers(Model model) {
-        List<User> users = userService.getAllUsers();
-        model.addAttribute("listUsers", users);
+        model.addAttribute("listUsers", userService.getAllUsers());
         return new ModelAndView("all-users");
     }
 
     @GetMapping("/addNewUser")
     public ModelAndView addNewUser(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute("user", new User());
         return new ModelAndView("user-info");
     }
 
@@ -45,19 +44,18 @@ public class UserController {
         return new ModelAndView("update-user");
     }
 
-    @GetMapping("/edit/{id}")
-    public ModelAndView viewEditUserForm(@PathVariable(name = "id") int id) {
-        ModelAndView modelAndView = new ModelAndView("update");
-        User user = userService.find(id);
-        modelAndView.addObject("user", user);
-        return modelAndView;
+    @PostMapping("/edit/{id}")
+    public ModelAndView viewEditUserForm(@ModelAttribute("user") User user) {
+       userService.edit(user);
+        return new ModelAndView("redirect:/");
     }
 
-    @RequestMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public ModelAndView deleteUser(@PathVariable(name = "id") int id) {
         userService.delete(id);
         return new ModelAndView("redirect:/");
     }
+
 }
 
 
@@ -73,8 +71,12 @@ public class UserController {
 
 
 
-
-
+//    @PostMapping("/edit/{id}")
+//    public ModelAndView viewEditUserForm(@PathVariable(name = "id") int id) {
+//        ModelAndView modelAndView = new ModelAndView("update");
+//        modelAndView.addObject("user", userService.find(id));
+//        return modelAndView;
+//    }
 
 //    @PatchMapping("/edit/{id}")
 //    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {

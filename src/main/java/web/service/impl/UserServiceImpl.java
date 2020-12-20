@@ -7,6 +7,7 @@ import web.dao.UserDao;
 import web.model.User;
 import web.service.UserService;
 
+import javax.persistence.FlushModeType;
 import java.util.List;
 
 @Service
@@ -30,6 +31,11 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void delete(int id) {
         userDao.deleteUser(id);
+    }
+
+    @Override
+    public void edit(User user) {
+        userDao.save(user);
     }
 
     @Override

@@ -2,11 +2,14 @@ package web.service;
 
 import web.model.User;
 
+import javax.persistence.FlushModeType;
 import java.util.List;
 
 public interface UserService {
 
     void add(User user);
+
+    void edit(User user);
 
     User find(int id);
 
@@ -14,18 +17,6 @@ public interface UserService {
 
     List<User> getAllUsers();
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //    void update(int id, User user);
