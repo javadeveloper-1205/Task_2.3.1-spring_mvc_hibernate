@@ -10,9 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import web.model.User;
 import web.service.UserService;
 
-import javax.persistence.FlushModeType;
-import java.util.List;
-
 
 @Controller
 @RequestMapping("/")
@@ -57,29 +54,3 @@ public class UserController {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @PostMapping("/edit/{id}")
-//    public ModelAndView viewEditUserForm(@PathVariable(name = "id") int id) {
-//        ModelAndView modelAndView = new ModelAndView("update");
-//        modelAndView.addObject("user", userService.find(id));
-//        return modelAndView;
-//    }
-
-//    @PatchMapping("/edit/{id}")
-//    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {
-//        userService.update(id, user);
-//        return "redirect:/";
-//    }

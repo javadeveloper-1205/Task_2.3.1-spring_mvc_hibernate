@@ -7,7 +7,6 @@ import web.dao.UserDao;
 import web.model.User;
 import web.service.UserService;
 
-import javax.persistence.FlushModeType;
 import java.util.List;
 
 @Service
@@ -43,34 +42,3 @@ public class UserServiceImpl implements UserService {
         return userDao.getAllUsers();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @Override
-//    @Transactional
-//    public void update(int id, User user) {
-//        userDao.updateUser(id, user);
-//    }

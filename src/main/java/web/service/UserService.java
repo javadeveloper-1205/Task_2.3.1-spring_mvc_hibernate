@@ -17,6 +17,3 @@ public interface UserService {
 
     List<User> getAllUsers();
 }
-
-
-//    void update(int id, User user);
